@@ -21,20 +21,7 @@ It uses **Supabase’s server-side auth** via cookies for secure SSR session han
 1. **Add this layer to your Nuxt project**:
 
 // nuxt.config.ts
-export default defineNuxtConfig({
   extends: ['./layers/supabase-auth-layer'], // or path to wherever you put it
-  runtimeConfig: {
-    public: {
-      supabaseUrl: process.env.SUPABASE_URL,
-      supabaseAnonKey: process.env.SUPABASE_ANON_KEY
-    }
-  },
-  future: {
-    compatibilityVersion: 4
-  },
-  compatibilityDate: '2025-07-20'
-})
-
 
 2. **Add the correct packages**:
 pnpm add @supabase/ssr cookie
@@ -55,7 +42,7 @@ console.log(user.value?.email)
 
 ## 📦 What this layer provides
 
-Composables
+### Composables
 useAuth()
 
 user: The current Supabase user (reactive)
@@ -68,10 +55,10 @@ signOut()
 
 refreshUser()
 
-Middleware
+### Middleware
 auth.global.ts – Automatically refreshes the user state on navigation or SSR render.
 
-Plugins
+### Plugins
 supabase.client.ts – Sets up Supabase on the browser using @supabase/ssr
 
 supabase.server.ts – Sets up Supabase on the server using secure cookies
